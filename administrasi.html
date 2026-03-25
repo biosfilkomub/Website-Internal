@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Administrasi Surat - WebNal">
+  <title>Administrasi - WebNal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle">☰</button>
+    <div class="mobile-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>📄 <span class="highlight">Administrasi</span> Surat</h1>
+          <p>Kelola surat masuk dan surat keluar organisasi</p>
+        </div>
+        <button class="btn-add admin-only" id="btn-add-surat">
+          ✚ Tambah Surat
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="masuk">📥 Surat Masuk</button>
+        <button class="tab-btn" data-tab="keluar">📤 Surat Keluar</button>
+      </div>
+
+      <!-- Drive Archive Link -->
+      <div style="margin-bottom:20px;">
+        <a id="drive-archive-link" href="https://drive.google.com/drive/folders/1DAUodas1l3PauB24wiIHBrJf28KgDyl1?usp=drive_link" target="_blank" class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;">
+          📁 Arsip Drive Surat Masuk
+        </a>
+      </div>
+
+      <!-- Table -->
+      <div class="content-section">
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">No</th>
+                <th>Nama Kegiatan</th>
+                <th>Nomor Surat</th>
+                <th>Link Surat</th>
+                <th style="width:80px;"></th>
+              </tr>
+            </thead>
+            <tbody id="surat-table-body">
+              <tr><td colspan="5" style="text-align:center;padding:32px;"><div class="spinner"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Tambah Surat -->
+  <div class="modal-overlay" id="modal-surat">
+    <div class="modal">
+      <h2>
+        <span class="modal-icon">📄</span>
+        Tambah Surat
+      </h2>
+      <form id="form-surat">
+        <div class="form-group">
+          <label for="surat-nama">Nama Kegiatan *</label>
+          <input type="text" id="surat-nama" placeholder="Masukkan nama kegiatan" required>
+        </div>
+        <div class="form-group">
+          <label for="surat-nomor">Nomor Surat *</label>
+          <input type="text" id="surat-nomor" placeholder="Contoh: 001/SK/III/2026" required>
+        </div>
+        <div class="form-group">
+          <label for="surat-tipe">Tipe</label>
+          <select id="surat-tipe">
+            <option value="masuk">Surat Masuk</option>
+            <option value="keluar">Surat Keluar</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="surat-link">Link Surat</label>
+          <input type="url" id="surat-link" placeholder="https://drive.google.com/...">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btn-cancel">Batal</button>
+          <button type="submit" class="btn-primary">Simpan Surat</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/administrasi.js"></script>
+</body>
+</html>

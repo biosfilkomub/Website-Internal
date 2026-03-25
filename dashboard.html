@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard - OrgManager">
+  <title>Dashboard - OrgManager</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <div class="app-layout">
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle">☰</button>
+    <div class="mobile-overlay"></div>
+
+    <!-- Sidebar (rendered by JS) -->
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>Selamat Datang di <span class="highlight">Dashboard</span></h1>
+          <p>Ringkasan aktivitas dan informasi organisasi</p>
+        </div>
+      </div>
+
+      <!-- Stats Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon gold">📥</div>
+          <div class="stat-value" id="stat-surat-masuk">0</div>
+          <div class="stat-label">Surat Masuk</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon blue">📤</div>
+          <div class="stat-value" id="stat-surat-keluar">0</div>
+          <div class="stat-label">Surat Keluar</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon green">💰</div>
+          <div class="stat-value" id="stat-kas" style="font-size:22px;">Rp 0</div>
+          <div class="stat-label">Total Kas</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon red">📅</div>
+          <div class="stat-value" id="stat-acara">0</div>
+          <div class="stat-label">Acara Mendatang</div>
+        </div>
+      </div>
+
+      <!-- Two Column Layout -->
+      <div class="dashboard-grid">
+        <!-- Calendar -->
+        <div class="calendar-section">
+          <div class="calendar-header">
+            <h3>📅 Kalender</h3>
+            <div class="calendar-nav">
+              <button class="btn-icon" onclick="prevMonth()">◀</button>
+              <span class="month-label" id="month-label"></span>
+              <button class="btn-icon" onclick="nextMonth()">▶</button>
+            </div>
+          </div>
+          <div class="calendar-grid" id="calendar-grid"></div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <div class="content-section">
+          <div class="section-header">
+            <h3>🔔 Acara Terdekat</h3>
+            <a href="timeline.html" class="btn-secondary">Lihat Semua →</a>
+          </div>
+          <div class="upcoming-list" id="upcoming-events">
+            <div style="text-align:center;padding:24px;">
+              <div class="spinner"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script type="module" src="js/dashboard.js"></script>
+</body>
+
+</html>

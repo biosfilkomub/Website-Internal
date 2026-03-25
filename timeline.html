@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Timeline Acara - WebNal">
+  <title>Timeline Acara - WebNal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle">☰</button>
+    <div class="mobile-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>📅 Timeline <span class="highlight">Acara</span></h1>
+          <p>Jadwal kegiatan dan acara organisasi</p>
+        </div>
+        <button class="btn-add admin-only" id="btn-add-acara">
+          ✚ Tambah Acara
+        </button>
+      </div>
+
+      <!-- Timeline -->
+      <div class="content-section">
+        <div class="timeline" id="timeline-container">
+          <div style="text-align:center;padding:32px;"><div class="spinner"></div></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Tambah Acara -->
+  <div class="modal-overlay" id="modal-acara">
+    <div class="modal">
+      <h2>
+        <span class="modal-icon">📅</span>
+        Tambah Acara
+      </h2>
+      <form id="form-acara">
+        <div class="form-group">
+          <label for="acara-nama">Nama Kegiatan *</label>
+          <input type="text" id="acara-nama" placeholder="Masukkan nama kegiatan" required>
+        </div>
+        <div class="form-group">
+          <label for="acara-tanggal">Tanggal *</label>
+          <input type="date" id="acara-tanggal" required>
+        </div>
+        <div class="form-group">
+          <label for="acara-lokasi">Lokasi *</label>
+          <input type="text" id="acara-lokasi" placeholder="Tempat pelaksanaan" required>
+        </div>
+        <div class="form-group">
+          <label for="acara-jam">Jam *</label>
+          <input type="time" id="acara-jam" required>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btn-cancel">Batal</button>
+          <button type="submit" class="btn-primary">Simpan Acara</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/timeline.js"></script>
+</body>
+</html>

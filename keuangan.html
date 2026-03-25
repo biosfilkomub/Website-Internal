@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Keuangan & Kas - WebNal">
+  <title>Keuangan & Kas - WebNal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle">☰</button>
+    <div class="mobile-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>💰 <span class="highlight">Keuangan</span> & Kas</h1>
+          <p>Kelola pemasukan dan pengeluaran organisasi</p>
+        </div>
+        <button class="btn-add admin-only" id="btn-add-transaksi">
+          ✚ Tambah Transaksi
+        </button>
+      </div>
+
+      <!-- Kas Card -->
+      <div class="kas-card">
+        <div class="kas-label">Total Kas Tersedia</div>
+        <div class="kas-value" id="total-kas">Rp 0</div>
+        <div class="kas-subtitle">
+          <span style="color:var(--success);font-weight:600;" id="total-pemasukan">+Rp 0</span> pemasukan •
+          <span style="color:var(--danger);font-weight:600;" id="total-pengeluaran">-Rp 0</span> pengeluaran
+        </div>
+      </div>
+
+      <!-- Transaction Table -->
+      <div class="content-section">
+        <div class="section-header">
+          <h3>📋 Riwayat Transaksi</h3>
+        </div>
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">No</th>
+                <th>Keterangan</th>
+                <th>Jenis</th>
+                <th>Nominal</th>
+                <th style="width:80px;"></th>
+              </tr>
+            </thead>
+            <tbody id="transaksi-table-body">
+              <tr><td colspan="5" style="text-align:center;padding:32px;"><div class="spinner"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Tambah Transaksi -->
+  <div class="modal-overlay" id="modal-transaksi">
+    <div class="modal">
+      <h2>
+        <span class="modal-icon">💰</span>
+        Tambah Transaksi
+      </h2>
+      <form id="form-transaksi">
+        <div class="form-group">
+          <label for="transaksi-keterangan">Keterangan *</label>
+          <input type="text" id="transaksi-keterangan" placeholder="Deskripsi transaksi" required>
+        </div>
+        <div class="form-group">
+          <label for="transaksi-jenis">Jenis Transaksi</label>
+          <select id="transaksi-jenis">
+            <option value="pemasukan">Pemasukan</option>
+            <option value="pengeluaran">Pengeluaran</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="transaksi-nominal">Nominal (Rp) *</label>
+          <input type="text" id="transaksi-nominal" placeholder="Contoh: 500000" required inputmode="numeric">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btn-cancel">Batal</button>
+          <button type="submit" class="btn-primary">Simpan Transaksi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/keuangan.js"></script>
+</body>
+</html>
