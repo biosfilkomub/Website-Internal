@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notulensi Rapat - WebNal">
+  <title>Notulensi Rapat - WebNal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle">☰</button>
+    <div class="mobile-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>📝 <span class="highlight">Notulensi</span> Rapat</h1>
+          <p>Kelola catatan dan ringkasan hasil rapat organisasi</p>
+        </div>
+        <button class="btn-add admin-only" id="btn-add-notulensi">
+          ✚ Tambah Notulensi
+        </button>
+      </div>
+
+      <!-- Table -->
+      <div class="content-section">
+        <div class="data-table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width:50px;">No</th>
+                <th>Judul Rapat</th>
+                <th>Tanggal</th>
+                <th>Peserta</th>
+                <th>Ringkasan</th>
+                <th>Dokumen</th>
+                <th style="width:80px;"></th>
+              </tr>
+            </thead>
+            <tbody id="notulensi-table-body">
+              <tr><td colspan="7" style="text-align:center;padding:32px;"><div class="spinner"></div></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Tambah Notulensi -->
+  <div class="modal-overlay" id="modal-notulensi">
+    <div class="modal" style="max-width:560px;">
+      <h2>
+        <span class="modal-icon">📝</span>
+        Tambah Notulensi Rapat
+      </h2>
+      <form id="form-notulensi">
+        <div class="form-group">
+          <label for="notulensi-judul">Judul Rapat *</label>
+          <input type="text" id="notulensi-judul" placeholder="Masukkan judul rapat" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="notulensi-tanggal">Tanggal *</label>
+            <input type="date" id="notulensi-tanggal" required>
+          </div>
+          <div class="form-group">
+            <label for="notulensi-peserta">Peserta</label>
+            <input type="text" id="notulensi-peserta" placeholder="Nama peserta (pisah koma)">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="notulensi-isi">Isi / Ringkasan Notulen *</label>
+          <textarea id="notulensi-isi" rows="5" placeholder="Tuliskan ringkasan hasil rapat..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="notulensi-link">Link Dokumen</label>
+          <input type="url" id="notulensi-link" placeholder="https://docs.google.com/...">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btn-cancel-notulensi">Batal</button>
+          <button type="submit" class="btn-primary">Simpan Notulensi</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/notulensi.js"></script>
+</body>
+</html>

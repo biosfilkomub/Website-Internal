@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Task Management - WebNal">
+  <title>Task - WebNal</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="app-layout">
+    <!-- Mobile Toggle -->
+    <button class="mobile-toggle">☰</button>
+    <div class="mobile-overlay"></div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar"></aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="page-header">
+        <div>
+          <h1>✅ <span class="highlight">Task</span> Management</h1>
+          <p>Kelola tugas dan pantau progres kegiatan organisasi</p>
+        </div>
+        <button class="btn-add admin-only" id="btn-add-task">
+          ✚ Tambah Task
+        </button>
+      </div>
+
+      <!-- Filter -->
+      <div class="reminder-filter">
+        <button class="filter-btn active" data-filter="semua">Semua</button>
+        <button class="filter-btn" data-filter="aktif">🔔 Aktif</button>
+        <button class="filter-btn" data-filter="selesai">✅ Selesai</button>
+        <button class="filter-btn" data-filter="terlewat">⚠️ Terlewat</button>
+      </div>
+
+      <!-- Task Cards -->
+      <div class="reminder-grid" id="task-container">
+        <div style="text-align:center;padding:32px;">
+          <div class="spinner"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Modal: Tambah Task -->
+  <div class="modal-overlay" id="modal-task">
+    <div class="modal" style="max-width:540px;">
+      <h2>
+        <span class="modal-icon">✅</span>
+        Tambah Task Baru
+      </h2>
+      <form id="form-task">
+        <div class="form-group">
+          <label for="task-judul">Judul Task *</label>
+          <input type="text" id="task-judul" placeholder="Masukkan judul tugas" required>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="task-tanggal">Tanggal Deadline *</label>
+            <input type="date" id="task-tanggal" required>
+          </div>
+          <div class="form-group">
+            <label for="task-jam">Jam *</label>
+            <input type="time" id="task-jam" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="task-deskripsi">Deskripsi Task</label>
+          <textarea id="task-deskripsi" rows="3" placeholder="Deskripsi tugas yang harus diselesaikan..."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btn-cancel-task">Batal</button>
+          <button type="submit" class="btn-primary">Simpan Task</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Modal: Tambah Output -->
+  <div class="modal-overlay" id="modal-output">
+    <div class="modal" style="max-width:540px;">
+      <h2>
+        <span class="modal-icon">📄</span>
+        Tambah Output Task
+      </h2>
+      <form id="form-output">
+        <input type="hidden" id="output-task-id">
+        <div class="form-group">
+          <label>Task</label>
+          <div class="output-task-title" id="output-task-title" style="padding:10px 14px;background:var(--bg-input);border-radius:var(--border-radius);color:var(--text-primary);font-weight:600;font-size:14px;border:1px solid var(--glass-border);"></div>
+        </div>
+        <div class="form-group">
+          <label for="output-isi">Output / Hasil *</label>
+          <textarea id="output-isi" rows="5" placeholder="Tuliskan hasil atau output dari task ini..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="output-link">Link Dokumen Pendukung</label>
+          <input type="url" id="output-link" placeholder="https://drive.google.com/...">
+        </div>
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" id="btn-cancel-output">Batal</button>
+          <button type="submit" class="btn-primary">Simpan Output</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script type="module" src="js/task.js"></script>
+</body>
+</html>
