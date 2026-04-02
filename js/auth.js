@@ -190,6 +190,12 @@ function initSidebar(activePage) {
       <a href="timeline.html" class="${activePage === 'timeline' ? 'active' : ''}">
         <span class="nav-icon">📅</span> Timeline Acara
       </a>
+      <a href="notulensi.html" class="${activePage === 'notulensi' ? 'active' : ''}">
+        <span class="nav-icon">📝</span> Notulensi
+      </a>
+      <a href="task.html" class="${activePage === 'task' ? 'active' : ''}">
+        <span class="nav-icon">✅</span> Task
+      </a>
     </nav>
     <div class="sidebar-footer">
       <button class="btn-logout" id="btn-logout">
