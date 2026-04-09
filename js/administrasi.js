@@ -12,7 +12,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
 import { checkAuth, applyRoleAccess, initSidebar, getUserRole, showToast } from './auth.js';
 
-let currentTab = 'masuk';
+let currentTab = 'keluar';
 
 // Drive archive links
 const DRIVE_LINKS = {
@@ -97,7 +97,7 @@ async function loadSurat() {
   const tableBody = document.getElementById('surat-table-body');
   if (!tableBody) return;
 
-  tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:32px;"><div class="spinner"></div></td></tr>';
+  tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;padding:32px;"><div class="spinner"></div></td></tr>';
 
   try {
     const snapshot = await getDocs(collection(db, 'surat'));
@@ -114,7 +114,7 @@ async function loadSurat() {
 
     if (docs.length === 0) {
       tableBody.innerHTML = `
-        <tr><td colspan="5">
+        <tr><td colspan="6">
           <div class="empty-state">
             <div class="empty-icon">${currentTab === 'masuk' ? '📥' : '📤'}</div>
             <p>Belum ada surat ${currentTab}</p>
@@ -128,9 +128,10 @@ async function loadSurat() {
     tableBody.innerHTML = docs.map((d, index) => {
       return `
         <tr style="animation: fadeInUp ${0.1 + index * 0.05}s ease-out">
-          <td>${index + 1}</td>
-          <td style="color:var(--text-primary);font-weight:500;">${escapeHtml(d.namaKegiatan)}</td>
           <td><span class="badge ${d.tipe}">${escapeHtml(d.nomorSurat)}</span></td>
+          <td style="color:var(--text-primary);font-weight:500;">${escapeHtml(d.namaKegiatan)}</td>
+          <td>${escapeHtml(d.tujuan) || '-'}</td>
+          <td>${escapeHtml(d.lampiran) || '-'}</td>
           <td class="link-cell">
             ${d.linkSurat ? `<a href="${escapeHtml(d.linkSurat)}" target="_blank">Buka Surat ↗</a>` : '-'}
           </td>
@@ -141,7 +142,7 @@ async function loadSurat() {
     }).join('');
   } catch (error) {
     console.error('Error loading surat:', error);
-    tableBody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--danger);">Gagal memuat data. Periksa koneksi dan konfigurasi Firebase.</td></tr>';
+    tableBody.innerHTML = '<tr><td colspan="6" style="text-align:center;color:var(--danger);">Gagal memuat data. Periksa koneksi dan konfigurasi Firebase.</td></tr>';
   }
 }
 
@@ -152,6 +153,8 @@ async function addSurat() {
   const namaKegiatan = document.getElementById('surat-nama').value.trim();
   const nomorSurat = document.getElementById('surat-nomor').value.trim();
   const tipe = document.getElementById('surat-tipe').value;
+  const tujuan = document.getElementById('surat-tujuan').value.trim();
+  const lampiran = document.getElementById('surat-lampiran').value.trim();
   const linkSurat = document.getElementById('surat-link').value.trim();
 
   if (!namaKegiatan || !nomorSurat) {
@@ -164,6 +167,8 @@ async function addSurat() {
       namaKegiatan,
       nomorSurat,
       tipe,
+      tujuan,
+      lampiran,
       linkSurat,
       createdAt: serverTimestamp()
     });
