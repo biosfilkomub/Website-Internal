@@ -30,14 +30,14 @@
 
       <!-- Tabs -->
       <div class="tabs">
-        <button class="tab-btn active" data-tab="masuk">📥 Surat Masuk</button>
-        <button class="tab-btn" data-tab="keluar">📤 Surat Keluar</button>
+        <button class="tab-btn" data-tab="masuk">📥 Surat Masuk</button>
+        <button class="tab-btn active" data-tab="keluar">📤 Surat Keluar</button>
       </div>
 
       <!-- Drive Archive Link -->
       <div style="margin-bottom:20px;">
-        <a id="drive-archive-link" href="https://drive.google.com/drive/folders/1DAUodas1l3PauB24wiIHBrJf28KgDyl1?usp=drive_link" target="_blank" class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;">
-          📁 Arsip Drive Surat Masuk
+        <a id="drive-archive-link" href="https://drive.google.com/drive/folders/1CFnCjWX2QhTZ8N0eYmA4zrrTsVS9-HU2?usp=drive_link" target="_blank" class="btn-secondary" style="display:inline-flex;align-items:center;gap:8px;padding:10px 20px;">
+          📁 Arsip Drive Surat Keluar
         </a>
       </div>
 
@@ -47,15 +47,16 @@
           <table class="data-table">
             <thead>
               <tr>
-                <th style="width:50px;">No</th>
-                <th>Nama Kegiatan</th>
                 <th>Nomor Surat</th>
+                <th>Nama Kegiatan</th>
+                <th>Tujuan</th>
+                <th>Lampiran</th>
                 <th>Link Surat</th>
                 <th style="width:80px;"></th>
               </tr>
             </thead>
             <tbody id="surat-table-body">
-              <tr><td colspan="5" style="text-align:center;padding:32px;"><div class="spinner"></div></td></tr>
+              <tr><td colspan="6" style="text-align:center;padding:32px;"><div class="spinner"></div></td></tr>
             </tbody>
           </table>
         </div>
@@ -85,6 +86,14 @@
             <option value="masuk">Surat Masuk</option>
             <option value="keluar">Surat Keluar</option>
           </select>
+        </div>
+        <div class="form-group">
+          <label for="surat-tujuan">Tujuan</label>
+          <input type="text" id="surat-tujuan" placeholder="Masukkan tujuan surat">
+        </div>
+        <div class="form-group">
+          <label for="surat-lampiran">Lampiran</label>
+          <input type="text" id="surat-lampiran" placeholder="Masukkan lampiran">
         </div>
         <div class="form-group">
           <label for="surat-link">Link Surat</label>
