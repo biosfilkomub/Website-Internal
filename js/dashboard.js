@@ -50,15 +50,6 @@ async function loadStats() {
     document.getElementById('stat-surat-masuk').textContent = suratMasuk;
     document.getElementById('stat-surat-keluar').textContent = suratKeluar;
 
-    // Calculate kas
-    const transaksiSnap = await getDocs(collection(db, 'transaksi'));
-    let totalKas = 0;
-    transaksiSnap.forEach(doc => {
-      const d = doc.data();
-      if (d.jenis === 'pemasukan') totalKas += Number(d.nominal) || 0;
-      else totalKas -= Number(d.nominal) || 0;
-    });
-    document.getElementById('stat-kas').textContent = formatRupiah(totalKas);
 
     // Count upcoming events
     const today = new Date().toISOString().split('T')[0];
@@ -211,10 +202,6 @@ function renderUpcomingEvents() {
 // ============================================
 // Utilities
 // ============================================
-function formatRupiah(num) {
-  const prefix = num < 0 ? '-Rp ' : 'Rp ';
-  return prefix + Math.abs(num).toLocaleString('id-ID');
-}
 
 function escapeHtml(text) {
   if (!text) return '';
