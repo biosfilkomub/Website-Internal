@@ -184,9 +184,6 @@ function initSidebar(activePage) {
       <a href="administrasi.html" class="${activePage === 'administrasi' ? 'active' : ''}">
         <span class="nav-icon">📄</span> Administrasi
       </a>
-      <a href="keuangan.html" class="${activePage === 'keuangan' ? 'active' : ''}">
-        <span class="nav-icon">💰</span> Keuangan & Kas
-      </a>
       <a href="timeline.html" class="${activePage === 'timeline' ? 'active' : ''}">
         <span class="nav-icon">📅</span> Timeline Acara
       </a>
